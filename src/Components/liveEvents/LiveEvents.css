@@ -1,0 +1,32 @@
+.video-container {
+  display: flex; /* Main Layout: Player | List */
+  gap: 20px;
+  padding: 20px;
+}
+
+.main-player {
+  flex: 3; /* Player takes 3/4 space */
+}
+
+.thumbnail-sidebar {
+  flex: 1; /* List takes 1/4 space */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: auto; /* Scrollable list */
+  max-height: 80vh;
+}
+
+.thumbnail-item {
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.thumbnail-item.active {
+  border-color: blue; /* Highlight active */
+}
+
+.thumbnail-item img {
+  width: 100%;
+  height: auto;
+}
