@@ -16,26 +16,7 @@ function LiveEvent() {
         Watch the UAE President’s Cup live and enjoy the latest horse racing
         action and highlights.
       </p>
-      <div className="video-container">
-        <div className="main-player">
-          <video key={currentVideo.url} controls width="80%">
-            <source src={currentVideo.url} type="video/mp4" />
-          </video>
-          <h2>{currentVideo.title}</h2>
-        </div>
-        <div className="thumbnail-sidebar">
-          {videos.map((video) => (
-            <div
-              key={video.id}
-              className={`thumbnail-item ${currentVideo.id === video.id ? "active" : ""}`}
-              onClick={() => setCurrentVideo(video)}
-            >
-              <img src={video.thumb} alt={video.title} />
-              <p>{video.title}</p>
-            </div>
-          ))}
-        </div>
-      </div>
+     
     </div>
   );
 }

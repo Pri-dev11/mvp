@@ -2,7 +2,9 @@
   text-align: center;
   width: 100%;
   overflow: hidden;
+  font-family: Syne, sans-serif;
 }
+
 body {
   overflow-y: scroll;
   /* overflow: hidden; */
@@ -14,3 +16,4 @@ body::-webkit-scrollbar {
   width: 0;
   display: none; /* For Chrome, Safari, and Edge */
 }
+

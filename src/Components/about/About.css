@@ -1,0 +1,94 @@
+.about-main{
+  margin-top: 5rem;
+}
+.about-section1{
+  padding: 0px !important;
+  margin: 2rem !important;
+  margin-left: 4rem!important;
+  width: 80%;
+}
+
+.about-section-row{
+  background-color: #F7F7F7;
+  /* padding: 0 1rem; */
+  width: 100%!important ;
+  margin: 2rem !important;
+  border-radius: 2rem!important;
+  height: 30rem!important;
+}
+
+.about-text{
+  display: block;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem!important;
+}
+
+.about-title{
+  font-family: Syne;
+  font-weight: 700!important;
+  font-style: Bold!important;
+  font-size: 5rem!important;
+  line-height: 100%;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-align: center;
+  margin-top: 2rem!important;
+}
+
+.about-img1{
+  height: 100%!important;
+  border-radius: 2rem!important;
+  margin-left: 1.5rem;
+}
+
+.about-img2{
+  height: 30rem!important;
+  border-top-left-radius: 2rem!important;
+  border-bottom-left-radius: 2rem!important;
+}
+
+.about-img3{
+ height: 30rem!important;
+  border-top-right-radius: 2rem!important;
+  border-bottom-right-radius: 2rem!important;
+}
+
+
+.board-member-header{
+  font-family: Syne;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 3rem;
+  line-height: 100%;
+  text-align: center;
+  padding: 0.5rem;
+}
+
+.board-member-title{
+  font-family: DM Sans;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 15px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: -3%;
+  text-align: center;
+}
+
+.card {
+  border: none !important;
+}
+
+.board-member-img{
+  border: none!important;
+  height: 14rem;
+  width: 14rem!important;
+  display: block!important;
+  border-radius: 2rem!important;
+  margin: 0 auto!important;
+  background-color: #D9D9D9;
+}
+
+

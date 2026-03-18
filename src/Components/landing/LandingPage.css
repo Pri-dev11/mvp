@@ -1,0 +1,55 @@
+.banner {
+  width: 100%;
+  height: 40rem;
+  background-color: transparent;
+  z-index: 0; /* Lowered to ensure header appears above */
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.landing-img-text{
+  color: white;
+  width: 100%;
+  height: 40.5rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+}
+
+.landing-header{
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.landing-text{
+  font-size: 0.8rem;
+  margin-top: 0.5rem;
+}
+.landing-bottom-container {
+  width: 100%;
+  height: 7rem;
+  display: flex; /* Arrange images in a single line */
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem; 
+  top: 37rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000; 
+  background: linear-gradient(180deg, rgba(15, 15, 146, 0.04) 0%, #161687 100%);
+  padding: 0 2rem;
+  position: absolute;
+}
+
+.landing-bottom-container-image {
+  width: 3rem;
+  height: 3rem;
+}
+
+

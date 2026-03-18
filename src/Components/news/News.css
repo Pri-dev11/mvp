@@ -1,19 +1,35 @@
 .news-container {
+  margin-top: 5rem;
+}
+
+.news-header{
+  font-size: 5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: -1rem;
+}
+
+.news-title-text{
+  /* margin-bottom: 2rem; */
+}
+
+.news-card-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem;
+   margin: 4rem 1rem 0 1rem;
 }
 
 .news-card {
   flex: 1 1 calc(33.333% - 1rem); /* Three cards per row */
   box-sizing: border-box;
-  border: 0.1rem solid #ccc;
-  border-radius: 0.8rem;
+  border: 0.1rem solid #F5F0E8;
+  border-radius: 1rem  !important;
   box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
-  text-align: center;
-  height: 30rem; /* Set a fixed height for all cards */
+  text-align: left;
+  height: 35rem!important; /* Set a fixed height for all cards */
   display: flex-start;
   flex-direction: column;
   justify-content: space-between;
@@ -21,21 +37,23 @@
 
 .news-image {
   width: 100%;
-  height: 12rem; /* Set image height to 40% of the card */
+  height: 14rem; /* Set image height to 40% of the card */
   object-fit: cover;
-  border-top-left-radius: 0.8rem;
-  border-top-right-radius: 0.8rem;
+  border-top-left-radius: 0.8rem !important;
+  border-top-right-radius: 0.8rem !important;
 }
 
 .news-date {
   font-size: 0.5rem;
   color: #003a6b;
   padding: 0.1rem;
+  margin: 0 0 1rem auto;
   border: 1px solid #5293bb;
   border-radius: 1rem;
   background: #f2fbff;
-  width: 6rem;
+  width: 7rem;
   display: block;
+  text-align: center;
 }
 
 .news-heading {
@@ -48,13 +66,29 @@
 .news-content {
   font-size: 1rem;
   color: #333;
+  padding: 1rem;
+  padding-bottom: 3rem;
+
 }
 
 .read-more {
   background: linear-gradient(90deg, #3c3cb6 27.24%, #141473 100%);
-  color: white;
-  border-radius: 1rem;
+  border-radius: 1rem !important;
   font-weight: 500;
-  font-size: x-small;
+  font-size: 1rem !important  ;
   padding: 0.5rem;
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  display: block;
+}
+
+.right-arrow {
+  content: "\2192";
+  border: solid white;
+  border-width: 0 0.1rem 0.1rem 0;
+  display: inline-block;
+  padding: 0.2rem;
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
 }

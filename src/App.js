@@ -1,8 +1,8 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./Components/header/Header";
-import Home from "./Components/dashboard/Home";
-// import About from "./Components/home/About";
+import Home from "./Components/home/Home";
+import About from "./Components/about/About";
 // import Events from "./Components/home/Events";
 import News from "./Components/news/News";
 // import Gallery from "./Components/home/Gallery";
@@ -15,15 +15,18 @@ function App() {
     <Router>
       <div className="App">
         <Header />
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          {/* <Route path="/about" element={<About />} /> */}
-          <Route path="/news" element={<News />} />
-          {/* <Route path="/gallery" element={<Gallery />} />
-          <Route path="/events" element={<EventsAndRaces />} /> 
-          <Route path="/ticket" element={<Ticket />} />
-          <Route path="/horsesAndPeople" element={<HorsesAndPeople />} /> */}
-        </Routes>
+        <div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/news" element={<News />} />
+            {/* <Route path="/gallery" element={<Gallery />} />
+            <Route path="/events" element={<EventsAndRaces />} /> 
+            <Route path="/ticket" element={<Ticket />} />
+            <Route path="/horsesAndPeople" element={<HorsesAndPeople />} /> */}
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>

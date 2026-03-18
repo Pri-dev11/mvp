@@ -4,7 +4,7 @@ import logoUAE from "./../Images/logoUAE.png";
 
 function Header() {
   return (
-    <header className="header">
+    <header className="header d-flex align-items-center justify-content-between">
       <div className="header-left">
         <img src={logoUAE} alt="UAE Logo" className="header-logo" />
       </div>
