@@ -84,7 +84,12 @@ function About() {
           {boardMemberList.map((member) => (
             <Col key={member.id} lg={3} md={4} sm={6} className="mb-4">
               <Card className='board-member-card'>
-                <Card.Img className='board-member-img' variant="top" src={member.image} />
+                <Card.Img
+                  className='board-member-img'
+                  variant="top"
+                  src={member.image}
+                  onError={(e) => { e.target.style.display = 'none'; }}
+                />
                 <Card.Body>
                   <Card.Title>{member.name}</Card.Title>
                   <Card.Text>{member.position}</Card.Text>

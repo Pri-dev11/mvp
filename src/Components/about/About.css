@@ -1,6 +1,7 @@
 .about-main{
   margin-top: 5rem;
 }
+
 .about-section1{
   padding: 0px !important;
   margin: 2rem !important;
@@ -26,14 +27,11 @@
 }
 
 .about-title{
-  font-family: Syne;
   font-weight: 700!important;
-  font-style: Bold!important;
-  font-size: 5rem!important;
-  line-height: 100%;
+  font-size: 4.5rem!important;
   letter-spacing: 0%;
   vertical-align: middle;
-  text-align: center;
+  text-align: left;
   margin-top: 2rem!important;
 }
 

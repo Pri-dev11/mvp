@@ -10,37 +10,53 @@ function Footer() {
           <img src={logoUAE} alt="logoUAE" className="footer-logo" />
           <div className="social-links">
             <a
-              href="https://www.facebook.com"
+              href="https://www.instagram.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-icon-link"
             >
-              <img
-                src="facebook-icon"
-                alt="Facebook Icon"
-                className="social-icon"
-              />
+              <i className="fa-brands fa-instagram"></i>
             </a>
             <a
               href="https://www.linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-icon-link"
             >
-              <img
-                src="linkedin-icon"
-                alt="LinkedIn Icon"
-                className="social-icon"
-              />
+              <i className="fa-brands fa-linkedin-in"></i>
             </a>
             <a
-              href="https://www.twitter.com"
+              href="https://www.facebook.com"
               target="_blank"
               rel="noopener noreferrer"
+              className="social-icon-link"
             >
-              <img
-                src="twitter-icon"
-                alt="Twitter Icon"
-                className="social-icon"
-              />
+              <i className="fa-brands fa-facebook-f"></i>
+            </a>
+            <a
+              href="https://www.x.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+                {/* <i className="fa-brands fa-x-twitter"></i> */}
+              <i class="fa-brands fa-twitter"></i>
+            </a>
+            <a
+              href="https://www.spotify.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <i className="fa-solid fa-music"></i>
+            </a>
+            <a
+              href="https://www.youtube.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="social-icon-link"
+            >
+              <i className="fa-brands fa-youtube"></i>
             </a>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Card, Col, Row, Button } from 'react-bootstrap';
+import { Card, Col, Row, Button } from 'react-bootstrap';
 
 import newsImage1 from "./../Images/NewsImage1.png";
 import newsImage2 from "./../Images/NewsImage2.png";
@@ -27,6 +27,7 @@ const newsList = [
   },
   {
     newsId: 3,
+    image: newsImage3,
     infoDate: "Monday, 25 April 10:41AM",
     heading:
       "Congratulations to the champions of the Moroccan leg of the UAEPresidentCup Series",
@@ -44,6 +45,7 @@ const newsList = [
   },
   {
     newsId: 5,
+    image: newsImage2,
     infoDate: "Monday, 25 April 10:41AM",
     heading:
       "Tomorrow, the Moroccan leg of the #UAEPresidentCup for Purebred Arabian Horses kicks off",
