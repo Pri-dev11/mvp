@@ -3,6 +3,9 @@ import "./Home.css";
 import LandingPage from "../landing/LandingPage";
 import LiveEvent from "../liveEvents/LiveEvent";
 import News from "../news/News";
+import EventsCalendar from "../eventsCalendar/EventsCalendar";
+import BookExperienceCard from "../bookExperienceCard/BookExperienceCard";
+import Winners from "../winners/Winners"
 import FAQ from "../faq/FAQ";
 
 function Home() {
@@ -10,10 +13,10 @@ function Home() {
     <div className="home-container">
       <LandingPage />
       <LiveEvent />
-      <News value="home" />
-      {/* <Experience />
+      <News from="home" />
       <EventsCalendar />
-      <Winners /> */}
+      <BookExperienceCard from="home" />
+      <Winners />
       <FAQ />
     </div>
   );

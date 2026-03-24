@@ -28,18 +28,36 @@ function LandingPage() {
         <CustomButton variant="primary" innerText="View upcoming race" onButtonClick={() => {}} />
       </div>
 
+
       <div className="landing-bottom-container">
-        <img src={image1} alt="1" className="landing-bottom-container-image" />
-        <img src={image2} alt="2" className="landing-bottom-container-image" />
-        <img src={image3} alt="3" className="landing-bottom-container-image" />
-        <img src={image4} alt="4" className="landing-bottom-container-image" />
-        <img src={image5} alt="5" className="landing-bottom-container-image" />
-        <img src={image6} alt="6" className="landing-bottom-container-image" />
-        <img src={image7} alt="7" className="landing-bottom-container-image" />
-        <img src={image8} alt="8" className="landing-bottom-container-image" />
-        <img src={image9} alt="9" className="landing-bottom-container-image" />
-        <img src={image10} alt="10" className="landing-bottom-container-image" />
-        <img src={image11} alt="11" className="landing-bottom-container-image" />
+        <div className="scrolling-wrapper">
+          <div className="scrolling-content">
+            <img src={image1} alt="1" className="landing-bottom-container-image" />
+            <img src={image2} alt="2" className="landing-bottom-container-image" />
+            <img src={image3} alt="3" className="landing-bottom-container-image" />
+            <img src={image4} alt="4" className="landing-bottom-container-image" />
+            <img src={image5} alt="5" className="landing-bottom-container-image" />
+            <img src={image6} alt="6" className="landing-bottom-container-image" />
+            <img src={image7} alt="7" className="landing-bottom-container-image" />
+            <img src={image8} alt="8" className="landing-bottom-container-image" />
+            <img src={image9} alt="9" className="landing-bottom-container-image" />
+            <img src={image10} alt="10" className="landing-bottom-container-image" />
+            <img src={image11} alt="11" className="landing-bottom-container-image" />
+          </div>
+          <div className="scrolling-content">
+            <img src={image1} alt="1" className="landing-bottom-container-image" />
+            <img src={image2} alt="2" className="landing-bottom-container-image" />
+            <img src={image3} alt="3" className="landing-bottom-container-image" />
+            <img src={image4} alt="4" className="landing-bottom-container-image" />
+            <img src={image5} alt="5" className="landing-bottom-container-image" />
+            <img src={image6} alt="6" className="landing-bottom-container-image" />
+            <img src={image7} alt="7" className="landing-bottom-container-image" />
+            <img src={image8} alt="8" className="landing-bottom-container-image" />
+            <img src={image9} alt="9" className="landing-bottom-container-image" />
+            <img src={image10} alt="10" className="landing-bottom-container-image" />
+            <img src={image11} alt="11" className="landing-bottom-container-image" />
+          </div>
+        </div>
       </div>
       
     </div>

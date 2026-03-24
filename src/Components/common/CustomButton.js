@@ -1,10 +1,14 @@
 import React from 'react'
 import Button from 'react-bootstrap/esm/Button'
+import './common.css'
 
 function CustomButton(props) {
   return (
-    <Button variant={props.variant} className="" onClick={props.onButtonClick}>
-      {props.innerText} <i className="fa fa-arrow-right" aria-hidden="true"></i>
+    <Button className="custom-btn">
+      {props.innerText}
+      <span className="btn-icon">
+        <i className="fa-solid fa-arrow-right"></i>
+      </span>
     </Button>
   )
 }

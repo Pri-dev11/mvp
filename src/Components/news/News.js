@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Row, Button } from 'react-bootstrap';
+import { Card, Col, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 import newsImage1 from "./../Images/NewsImage1.png";
 import newsImage2 from "./../Images/NewsImage2.png";
 import newsImage3 from "./../Images/NewsImage3.png";
 import "./News.css";
+import CustomButton from "../common/CustomButton";
 
 const newsList = [
   {
@@ -66,6 +68,7 @@ const newsList = [
 function News(props) {
   const [newNews, setNewNews] = useState([]);
   const [showMore, setShowMore] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setNewNews(newsList);
@@ -79,20 +82,21 @@ function News(props) {
       <div className="news-card-container">
         <Row lg={4} md={4} sm={6} xs={12} className='g-4'>
           {newNews.length > 0 &&
-          newNews.map((news) => (
-            <Col key={news.newsId} lg={4} md={4} sm={6} className="mb-4">
-              <Card className="news-card">
-                <Card.Img className="news-image" variant="top" src={news.image} />
-                <Card.Body>
-                   <p className="news-date">{news.infoDate}</p>
-                  <Card.Title>{news.heading}</Card.Title>
-                  <Card.Text>{news.content}</Card.Text>
-                  <Button className="read-more">Read more <i class="right-arrow"></i>
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
+            newNews.map((news) => (
+              <Col key={news.newsId} lg={4} md={4} sm={6} xs={12} className="mb-4">
+                <Card className="news-card">
+                  <Card.Img className="news-image" variant="top" src={news.image} />
+                  <Card.Body>
+                    <p className="news-date">{news.infoDate}</p>
+                    <Card.Title>{news.heading}</Card.Title>
+                    <Card.Text className="news-content">{news.content}</Card.Text>
+                    <div className="read-more">
+                      <CustomButton innerText="Read more" onClick={() => navigate(`/news/${news.newsId}`)} />
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))}
         </Row>
       </div>
     </div>

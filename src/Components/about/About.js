@@ -50,26 +50,26 @@ function About() {
       <Container className='about-section1'>
         <Card >
           <Row className='about-section-row'>
-            <Col md={6}>
+              <Col xs={10} md={6}>
               <Card.Body className='about-text'>
                 <Card.Title className='about-title'>{aboutDetails.title}</Card.Title>
                 <Card.Text>{aboutDetails.desc1}</Card.Text>
               </Card.Body>
             </Col>
-             <Col md={6}>
+               <Col xs={10} md={6}>
               <Card.Img className='about-img1' src={aboutDetails.img1} />
             </Col>
           </Row>
         </Card>
         <Card>
           <Row className='about-section-row g-0'>
-            <Col md={3}> 
+              <Col xs={5} sm={6} md={3}> 
               <Image src={aboutDetails.img2} alt="Image 2" fluid className="about-img2" />
             </Col>
-            <Col md={3}> 
+              <Col xs={5} sm={6} md={3}> 
               <Image src={aboutDetails.img3} alt="Image 3" fluid className="about-img3" />
             </Col>
-            <Col md={6} className='about-text'>
+              <Col xs={10} md={6} className='about-text'>
               <Card.Body>
                 <Card.Text>{aboutDetails.desc2}</Card.Text>
               </Card.Body>

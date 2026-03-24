@@ -1,4 +1,35 @@
-.btn .btn-primary{
-  background-color: #3C3CB6!important;
-  border-radius: 10%;
+.custom-btn {
+  background: linear-gradient(90deg, #3C3CB6 27.24%, #141473 100%);
+  border: none !important;
+  border-radius: 2rem !important;
+  padding: 0.4rem 0.4rem 0.4rem 1.5rem !important;
+  font-size: 0.85rem !important;
+  font-weight: 500;
+  display: inline-flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  white-space: nowrap;
+  gap: 1rem;
+  transition: background-color 0.2s;
+}
+
+.custom-btn:hover,
+.custom-btn:active,
+.custom-btn:focus {
+  background-color: #1a1668 !important;
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+.custom-btn .btn-icon {
+  background-color: white;
+  color: #2120aa;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
 }
