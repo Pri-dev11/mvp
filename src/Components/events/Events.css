@@ -1,0 +1,301 @@
+.events-page {
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+  min-height: 100vh;
+  background: #fff;
+}
+
+/* Header */
+.events-page-header {
+  margin-bottom: 2rem;
+}
+
+.events-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0d0d3b;
+  letter-spacing: 0.5px;
+}
+
+.events-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+  margin-top: -0.4rem;
+}
+
+/* Cards Container */
+.upcoming-events-container {
+  display: flex;
+  gap: 1.5rem;
+  margin: 1rem auto;
+  max-width: 1100px;
+  min-height: 280px;
+  padding: 0 1rem;
+}
+
+/* Left Card */
+.upcoming-event-col {
+  flex: 1;
+}
+
+.upcoming-event-card {
+  background: #151585;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.upcoming-event-card-header {
+  background: #151585;
+  padding: 1.8rem 2rem 1rem;
+  text-align: center;
+}
+
+.upcoming-event-card-body {
+  background: #000057;
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.upcoming-event-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.upcoming-event-sub {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+.upcoming-event-meta {
+  display: flex;
+  gap: 10rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+}
+
+.upcoming-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.meta-label {
+  font-size: 0.68rem;
+  opacity: 0.65;
+  text-transform: capitalize;
+  letter-spacing: 0.4px;
+}
+
+.meta-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* Horse silhouette */
+.horse-silhouette {
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+  font-size: 8rem;
+  opacity: 0.15;
+  z-index: 1;
+  filter: grayscale(1);
+  transform: scaleX(-1);
+  user-select: none;
+  line-height: 1;
+}
+
+/* Right: Countdown */
+.countdown-col {
+  flex: 1;
+}
+
+.countdown-card {
+  border-radius: 1.2rem;
+  overflow: hidden;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.countdown-card-header {
+  background: #151585;
+  width: 100%;
+  padding: 1.8rem 2rem 1rem;
+  text-align: center;
+}
+
+.countdown-card-body {
+  background: #000057;
+  width: 100%;
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-heading {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 0.3rem;
+}
+
+.countdown-sub {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+.countdown-grid {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.countdown-box {
+  background: #151585;
+  border-radius: 0.8rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.countdown-label {
+  font-size: 0.72rem;
+  opacity: 0.7;
+  text-transform: capitalize;
+  letter-spacing: 0.4px;
+}
+
+/* Divider */
+.events-divider {
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  border: none;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* Filter Pills */
+.events-filters {
+  margin: 1.5rem 0;
+
+}
+
+.filter-dropdown-wrapper {
+  position: relative;
+}
+
+.filter-pill {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #d8d8d8;
+  border-radius: 2rem;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+  gap: 0.3rem;
+  white-space: nowrap;
+  transition: border-color 0.2s;
+}
+
+.filter-pill:hover {
+  border-color: #1a1a8c;
+}
+
+.filter-chevron {
+  transition: transform 0.2s ease;
+  font-size: 0.7rem;
+}
+
+.filter-chevron.open {
+  transform: rotate(180deg);
+}
+
+.filter-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 0.6rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-width: 120px;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.filter-dropdown-item {
+  padding: 0.5rem 1.2rem;
+  font-size: 0.88rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.filter-dropdown-item:hover {
+  background: #f0f1ff;
+  color: #1a1a8c;
+}
+
+@media (max-width: 768px) {
+  .upcoming-events-container {
+    flex-direction: column;
+  }
+
+  .upcoming-event-col,
+  .countdown-col {
+    flex: unset;
+    width: 100%;
+  }
+
+  .countdown-grid {
+    gap: 0.6rem;
+  }
+
+  .countdown-box {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
+
+  .events-title {
+    font-size: 2rem;
+  }
+}
+
+.events-list-cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding: 0 2rem 2rem 2rem;
+}

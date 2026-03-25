@@ -49,6 +49,7 @@
 .detail-icon {
   font-size: 1.1rem;
   opacity: 0.6;
+  color: white
 }
 
 .detail-text {
@@ -57,9 +58,11 @@
 }
 
 .detail-label {
-  font-size: 0.65rem;
+  font-size: 0.8rem;
   opacity: 0.6;
   margin-bottom: 0.3rem;
+  color: #999999;
+
 }
 
 .detail-value {

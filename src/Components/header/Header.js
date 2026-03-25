@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Nav, NavDropdown } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import "./Header.css";
@@ -9,9 +9,16 @@ function Header() {
   const [season, setSeason] = useState("Season");
   const [language, setLanguage] = useState("EN");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <header className="header d-flex align-items-center justify-content-between">
+    <header className={`header d-flex align-items-center justify-content-between ${scrolled ? "scrolled" : ""}`}>
       <div className="header-left">
         <img src={logoUAE} alt="UAE Logo" className="header-logo" />
       </div>
@@ -31,19 +38,13 @@ function Header() {
             <Nav.Link className={`header-link ${location.pathname === "/gallery" ? "active" : ""}`} href="/gallery">Gallery</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className={`header-link split-link ${location.pathname === "/events" ? "active" : ""}`} href="/events">
-              <span>Events &</span>
-              <span>Races</span>
-            </Nav.Link>
+            <Nav.Link className={`header-link  ${location.pathname === "/events" ? "active" : ""}`} href="/events">Events & Races</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link className={`header-link ${location.pathname === "/ticket" ? "active" : ""}`} href="/ticket">Tickets</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className={`header-link split-link ${location.pathname === "/horsesAndPeople" ? "active" : ""}`} href="/horsesAndPeople">
-              <span>Horses &</span>
-              <span>People</span>
-            </Nav.Link>
+            <Nav.Link className={`header-link ${location.pathname === "/horsesAndPeople" ? "active" : ""}`} href="/horsesAndPeople">Horses & People</Nav.Link>
           </Nav.Item>
         </Nav>
       </div>

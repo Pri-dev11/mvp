@@ -66,7 +66,7 @@ function LiveEvent() {
               <img src={`https://img.youtube.com/vi/${getYoutubeId(video.url)}/mqdefault.jpg`} alt={video.title} />
               <div className="video-item-overlay">
                 <h4>{video.title}</h4>
-                <span className="live-badge">Live</span>
+                {/* <span className="live-badge">Live</span> */}
               </div>
             </div>
           ))}

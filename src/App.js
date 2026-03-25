@@ -4,7 +4,7 @@ import Header from "./Components/header/Header";
 import Home from "./Components/home/Home";
 import About from "./Components/about/About";
 import NewsDetail from "./Components/newsDetail/NewsDetail";
-// import Events from "./Components/home/Events";
+import Events from "./Components/events/Events";
 import News from "./Components/news/News";
 
 // import Gallery from "./Components/home/Gallery";
@@ -24,8 +24,9 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
+            <Route path="/events" element={<Events />} />
             {/* <Route path="/gallery" element={<Gallery />} />
-            <Route path="/events" element={<EventsAndRaces />} /> 
+            
             <Route path="/ticket" element={<Ticket />} />
             <Route path="/horsesAndPeople" element={<HorsesAndPeople />} /> */}
           </Routes>
