@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "./EventsCard.css"
 
 function EventsCard(props) {
+  const navigate = useNavigate();
   const event = props.event
   return (
-    <div key={event.id} className="event-card">
+    <div key={event.id} className="event-card" onClick={() => navigate('/raceDetail')}>
       <div className="event-badge">{event.remainingDays} Days remaining</div>
       <h3 className="event-title">
         {event.title && event.title.split('UAEPresidentCup').map((part, i) => (

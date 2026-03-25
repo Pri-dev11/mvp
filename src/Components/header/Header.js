@@ -32,13 +32,13 @@ function Header() {
             <Nav.Link className={`header-link ${location.pathname === "/about" ? "active" : ""}`} href="/about">About</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className={`header-link ${location.pathname === "/news" ? "active" : ""}`} href="/news">News</Nav.Link>
+            <Nav.Link className={`header-link ${location.pathname.startsWith("/news") ? "active" : ""}`} href="/news">News</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link className={`header-link ${location.pathname === "/gallery" ? "active" : ""}`} href="/gallery">Gallery</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link className={`header-link  ${location.pathname === "/events" ? "active" : ""}`} href="/events">Events & Races</Nav.Link>
+            <Nav.Link className={`header-link  ${location.pathname === "/events" || location.pathname === "/raceDetail" ? "active" : ""}`} href="/events">Events & Races</Nav.Link>
           </Nav.Item>
           <Nav.Item>
             <Nav.Link className={`header-link ${location.pathname === "/ticket" ? "active" : ""}`} href="/ticket">Tickets</Nav.Link>

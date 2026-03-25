@@ -1,0 +1,114 @@
+.contact-modal .modal-dialog {
+  max-width: 80vw;
+  margin-top: 6rem !important;
+}
+
+.contact-modal .modal-content {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+}
+
+.contact-image-container {
+  height: 100%;
+  width: 100%;
+}
+
+.contact-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  min-height: 100%;
+}
+
+.contact-close-btn {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: white;
+  border: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  color: #333;
+}
+
+.contact-close-btn:hover {
+  background: #f1f5f9;
+  transform: scale(1.1);
+}
+
+.contact-form-container {
+  background-color: #fff;
+}
+
+.write-to-us {
+  font-weight: 800;
+  font-size: 2.22rem;
+  color: #000;
+}
+
+.contact-description {
+  font-size: 0.95rem;
+  margin-bottom: 1rem !important;
+  line-height: 1.6;
+}
+
+.contact-socials {
+  margin: 1.5rem 0;
+}
+
+.custom-input {
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 1px solid #F5F0E8 !important;
+}
+
+.custom-input:focus {
+  border: none !important;
+  border-bottom: 2px solid #F5F0E8 !important;
+  box-shadow: none !important;
+}
+
+.submit-btn {
+  background-color: #151585;
+  border-color: #151585;
+  border-radius: 0.75rem;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.submit-btn:hover {
+  background-color: #0d0d6e;
+  border-color: #0d0d6e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(21, 21, 133, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .contact-modal .modal-content {
+    border-radius: 1rem;
+  }
+
+  .contact-image {
+    height: 300px;
+    min-height: 300px;
+  }
+
+  .write-to-us {
+    font-size: 1.8rem;
+  }
+}

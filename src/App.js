@@ -8,11 +8,10 @@ import Events from "./Components/events/Events";
 import News from "./Components/news/News";
 import HorsesAndPeople from "./Components/horsesAndPeople/HorsesAndPeople";
 import Ticket from "./Components/ticket/Ticket";
-
-// import Gallery from "./Components/home/Gallery";
-// import Contact from "./Components/home/Contact";
-// import FAQ from "./Components/home/FAQ";
+import Gallery from "./Components/gallery/Gallery";
+import RaceDetail from "./Components/raceDetail/RaceDetail";
 import Footer from "./Components/footer/Footer";
+
 
 function App() {
   return (
@@ -29,9 +28,8 @@ function App() {
             <Route path="/events" element={<Events />} />
             <Route path="/horsesAndPeople" element={<HorsesAndPeople />} />
             <Route path="/ticket" element={<Ticket />} />
-            {/* <Route path="/gallery" element={<Gallery />} />
-            
-             */}
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/raceDetail" element={<RaceDetail />} />
           </Routes>
         </div>
         <Footer />

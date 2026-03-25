@@ -1,0 +1,27 @@
+.social-links-component {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.social-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.2rem;
+  height: 2.2rem;
+  border: 2px solid #151585;
+  border-radius: 50%;
+  color: white !important;
+  background-color: #151585;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.social-icon-link:hover {
+  background-color: #0d0d6e;
+  border-color: #0d0d6e;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(21, 21, 133, 0.2);
+}
