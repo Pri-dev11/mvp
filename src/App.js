@@ -6,6 +6,8 @@ import About from "./Components/about/About";
 import NewsDetail from "./Components/newsDetail/NewsDetail";
 import Events from "./Components/events/Events";
 import News from "./Components/news/News";
+import HorsesAndPeople from "./Components/horsesAndPeople/HorsesAndPeople";
+import Ticket from "./Components/ticket/Ticket";
 
 // import Gallery from "./Components/home/Gallery";
 // import Contact from "./Components/home/Contact";
@@ -25,10 +27,11 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/horsesAndPeople" element={<HorsesAndPeople />} />
+            <Route path="/ticket" element={<Ticket />} />
             {/* <Route path="/gallery" element={<Gallery />} />
             
-            <Route path="/ticket" element={<Ticket />} />
-            <Route path="/horsesAndPeople" element={<HorsesAndPeople />} /> */}
+             */}
           </Routes>
         </div>
         <Footer />

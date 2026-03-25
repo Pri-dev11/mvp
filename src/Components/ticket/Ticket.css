@@ -1,0 +1,63 @@
+.ticket-container {
+  margin-top: 5rem;
+}
+
+.ticket-cards-grid {
+  margin-top: 5rem !important;
+  max-width: 1200px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.ticket-card {
+  color: white !important;
+  background-color: #000057 !important;
+  border-radius: 1.5rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('./../Images/bookingImg.jpg');
+  background-size: cover;
+  background-position: center top;
+  z-index: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ticket-item {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.ticket-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.ticket-label {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ticket-value {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.ticket-icon {
+  font-size: 1.25rem;
+  margin-top: 0.2rem;
+}

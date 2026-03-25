@@ -1,0 +1,196 @@
+.horses-and-people-container {
+  margin-top: 5rem;
+  padding: 2rem 5%;
+  background-color: #fcfcfc;
+  min-height: 100vh;
+  color: black;
+}
+
+/* Tabs Styling */
+.custom-tabs-style .nav-link {
+  color: white;
+  background-color: #151585;
+  font-weight: 600;
+  border: none !important;
+  padding: 1rem 1.5rem;
+  /* transition: all 0.2s ease; */
+  font-size: 1.05rem;
+  border-radius: 0 !important;
+}
+
+.custom-tabs-style .nav-link:hover {
+  color: white !important;
+  background-color: #151585 !important;
+}
+
+.custom-tabs-style .nav-link.active {
+  color: white !important;
+  background-color: #151585 !important;
+  /* border-bottom: 3px solid white !important; */
+  text-decoration: underline;
+}
+
+/* Tab Content Header */
+.tab-pane-content {
+  padding: 2rem 0;
+}
+
+.tab-title {
+  font-weight: 800;
+  font-size: 2.2rem;
+  margin-bottom: 0.2rem;
+}
+
+.tab-subtitle {
+  font-size: 1rem;
+}
+
+/* Search Bar Styling */
+.search-filter-section {
+  display: flex;
+  justify-content: center;
+}
+
+.search-input-group {
+  max-width: 400px;
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); */
+  border-radius: 1.5rem;
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+
+}
+
+.search-icon-bg {
+  background-color: white !important;
+  border: none !important;
+  /* color: #94a3b8; */
+  padding-left: 1.25rem;
+}
+
+.search-input {
+  border: none !important;
+  padding: 1rem !important;
+  font-size: 0.95rem !important;
+  color: black !important;
+}
+
+.search-input:focus {
+  box-shadow: none !important;
+}
+
+/* Table Styling */
+.custom-table-scroll {
+  border-radius: 1rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+  background: #fff;
+  border: 1px solid #eef2f6;
+  overflow-x: auto;
+}
+
+.custom-dynamic-table {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.custom-dynamic-table thead th {
+  color: white;
+  background-color: #151585;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 2px solid #eef2f6;
+}
+
+.custom-dynamic-table tbody tr:nth-child(even) td {
+  background-color: #F7F7F7;
+}
+
+.custom-dynamic-table tbody tr:nth-child(odd) td {
+  background-color: white;
+}
+
+.custom-dynamic-table tbody tr {
+  padding: 0.5rem 0;
+}
+
+.custom-dynamic-table tbody tr:hover {
+  background-color: #f1f5f9;
+}
+
+.custom-dynamic-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.custom-dynamic-table tbody td {
+  padding: 2.5rem 1.5rem;
+  color: black;
+  font-size: 0.9rem;
+  vertical-align: middle;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+/* Pagination Styling */
+.custom-pagination {
+  margin-bottom: 2rem;
+}
+
+.pagination-btn,
+.pagination-number {
+  border: 1px solid #e2e8f0;
+  background-color: white;
+  color: #1e293b;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border-radius: 0.5rem;
+}
+
+.pagination-btn:hover:not(:disabled),
+.pagination-number:hover {
+  background-color: #f1f5f9;
+  border-color: #151585;
+  color: #151585;
+}
+
+.pagination-number.active {
+  background-color: #151585;
+  color: white;
+  border-color: #151585;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .horses-and-people-container {
+    padding: 1rem;
+    margin-top: 4.5rem;
+  }
+
+  .tab-title {
+    font-size: 1.8rem;
+  }
+
+  .custom-tabs-style .nav-link {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .pagination-btn,
+  .pagination-number {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+  }
+}
