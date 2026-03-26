@@ -1,9 +1,11 @@
 import { legacy_createStore as createStore, applyMiddleware, combineReducers } from "redux";
 import { thunk } from "redux-thunk";
-import { newsReducer } from "../Reducer/NewsReducer";
+import NewsReducer from "../Reducer/NewsReducer";
+import FaqReducer from "../Reducer/FaqReducer";
 
 const rootReducer = combineReducers({
-  news: newsReducer,
+  news: NewsReducer,
+  faq: FaqReducer,
 });
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));

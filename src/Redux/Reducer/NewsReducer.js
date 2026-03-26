@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 }
 
-export const newsReducer = (state = initialState, action) => {
+const NewsReducer = (state = initialState, action) => {
   switch (action.type) {
     case NEWS_LIST:
       return {
@@ -32,3 +32,5 @@ export const newsReducer = (state = initialState, action) => {
       return state;
   }
 }
+
+export default NewsReducer

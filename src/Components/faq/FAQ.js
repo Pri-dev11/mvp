@@ -1,36 +1,53 @@
 import React, { useState, useEffect } from 'react'
-import { Accordion } from 'react-bootstrap';
+import { Accordion, Spinner } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fetchFaqList } from '../../Redux/Actions';
 import './FAQ.css';
 
-
-const faqInfo = [
-  {faqIndex:0, question: 'What is the UAE President Cup?',
-    answer: 'The UAE President Cup is a series of races for purebred Arabian horses.The UAE President Cup is a series of races for purebred Arabian horses.The UAE President Cup is a series of races for purebred Arabian horses.The UAE President Cup is a series of races for purebred Arabian horses.'},
-  {faqIndex:1, question: 'When and where is the 29th edition taking place?',
-    answer: 'The UAE President Cup is a series of races for purebred Arabian horses.'},
-  {faqIndex:2, question: 'Where can I find the full Competition Calendar?',
-    answer: 'The UAE President Cup is a series of races for purebred Arabian horses.'},
-  {faqIndex:3, question: 'How do I purchase tickets?',
-    answer: 'The UAE President Cup is a series of races for purebred Arabian horses.'},
-];
-
-function FAQ() {
+function FAQ(props) {
   const [faqData, setFaqData] = useState([]);
 
   useEffect(() => {
-    //Fetch FAQ data from API and set state
-    setFaqData(faqInfo);
-  },[])
+    //Fetch FAQ data from API 
+    props.fetchFaqList();
+  }, [])
+
+
+  useEffect(() => {
+    //set API data tostate
+    if (props.faqList) {
+      setFaqData(props.faqList);
+    }
+  }, [props.faqList])
+
+  if (props.loading) {
+    return (
+      <div className='faq-container'>
+        <Spinner animation="border" variant="primary" />
+        <p className="mt-3">Loading answers...</p>
+      </div>
+    );
+  }
+
+  if (props.error) {
+    return (
+      <div className='faq-container text-center'>
+        <h2 className='faq-title'>FAQ</h2>
+        <div className='text-danger mt-4 fw-bold'>Something went wrong!!</div>
+        <p className="text-muted small">{props.error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className='faq-container'>
       <h2 className='faq-title'>FAQ</h2>
-      <div>Answers to the frequently asked questions</div>
+      <div className='faq-subtitle'>Answers to the frequently asked questions</div>
       <Accordion className='faq-acc'>
-        {faqData.map((faq) => (
-          <Accordion.Item className='faq-item' eventKey={faq.faqIndex} key={faq.faqIndex}>
+        {faqData && faqData.map((faq) => (
+          <Accordion.Item className='faq-item' eventKey={faq._id} key={faq._id}>
             <Accordion.Header>{faq.question}</Accordion.Header>
-            <Accordion.Body className='faq-ans'>{faq.answer}</Accordion.Body>
+            <Accordion.Body className='faq-ans'>{faq.answers && faq.answers[0]?.text}</Accordion.Body>
           </Accordion.Item>
         ))}
       </Accordion>
@@ -38,4 +55,14 @@ function FAQ() {
   )
 }
 
-export default FAQ
+const mapStateToProps = (state) => ({
+  faqList: state.faq.data,
+  loading: state.faq.loading,
+  error: state.faq.error,
+});
+
+const mapDispatchToProps = {
+  fetchFaqList,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(FAQ);

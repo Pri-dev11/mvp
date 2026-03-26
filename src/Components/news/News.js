@@ -18,7 +18,7 @@ function News(props) {
 
   useEffect(() => {
     fetchNewsList();
-  }, [fetchNewsList]);
+  }, []);
 
   useEffect(() => {
     console.log("response", newsList.data);

@@ -1,27 +1,31 @@
-.faq-container{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5rem;
-    padding: 2rem;
+.faq-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem;
+  padding: 2rem;
 }
 
-.faq-title{
-  font-size: 3rem;
+.faq-title {
+  font-size: 2.5rem;
   font-weight: bold;
-
 }
 
-.faq-acc{
+.faq-subtitle {
+  font-family: "DM Sans";
+  font-weight: 500;
+}
+
+.faq-acc {
   margin-top: 3rem;
-  width: 100%!important;
+  width: 100% !important;
   max-width: 800px;
-  border: none!important;
+  border: none !important;
   font-size: 1rem;
   letter-spacing: 0.3s;
 }
 
-.faq-item{
+.faq-item {
   border-top: none !important;
   border-right: none !important;
   border-left: none !important;
@@ -32,8 +36,6 @@
   content: '\+';
   font-size: large;
   font-weight: bold;
-  font-family: "Font Awesome 5 Free";
-  color: #151585;
   background-image: none;
   position: absolute;
   right: 1.25rem;
@@ -49,9 +51,7 @@
 .faq-acc .accordion-button:not(.collapsed)::after {
   content: '\-';
   font-size: large;
-  font-weight: bold;
-  font-family: "Font Awesome 5 Free";
-  color: #151585;
+  font-weight: bold !important;
   background-image: none;
   position: absolute;
   right: 1.25rem;
@@ -64,6 +64,13 @@
   justify-content: center;
 }
 
-.faq-ans{
-  text-align: left!important;
+.faq-acc .accordion-button {
+  background-color: white !important;
+  font-size: 1.2rem;
+  font-weight: 500 !important;
+  color: black !important;
+}
+
+.faq-ans {
+  text-align: left !important;
 }
