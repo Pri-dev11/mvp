@@ -51,21 +51,6 @@ export const fetchPastEvents = () => {
   }
 }
 
-// export const fetchEventsCalendar = (params) => {
-//   console.log("action")
-//   return async (dispatch) => {
-//     console.log("here")
-//     dispatch({ type: EVENT_CALENDAR });
-//     try {
-//       console.log("try")
-//       const response = await axios.get(BASE_URL + "events/public?month=3&year=2026");
-//       dispatch({ type: EVENT_CALENDAR_SUCCESS, payload: response.data });
-//     } catch (error) {
-//       dispatch({ type: EVENT_CALENDAR_FAILURE, payload: error.message });
-//     }
-//   }
-// }
-
 const monthToNumber = (monthName) => {
   const months = {
     'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6,
