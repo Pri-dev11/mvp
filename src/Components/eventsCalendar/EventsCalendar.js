@@ -54,7 +54,7 @@ function EventsCalendar(props) {
   };
 
   return (
-    <div className="events-calendar-section">
+    <div className="events-calendar-section" id="events-calendar">
       <div className="events-calendar-bg"></div>
 
       <div className="events-calendar-content">

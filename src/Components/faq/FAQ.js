@@ -40,7 +40,7 @@ function FAQ(props) {
   }
 
   return (
-    <div className='faq-container'>
+    <div className='faq-container' id="faq">
       <h2 className='faq-title'>FAQ</h2>
       <div className='faq-subtitle'>Answers to the frequently asked questions</div>
       <Accordion className='faq-acc'>

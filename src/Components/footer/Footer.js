@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logoUAE from "./../Images/logoUAE.png";
 import SocialLinks from "../common/SocialLinks";
 import ContactModal from "../contactModal/ContactModal";
@@ -22,19 +23,19 @@ function Footer() {
         <div className="footer-right">
           <div className="footer-column">
             <h4>Events</h4>
-            <a href="/events-calendar">Events Calendar</a>
-            <a href="/news">News</a>
-            <a href="/upcoming-events">Upcoming Events</a>
+            <Link to="/home#events-calendar">Events Calendar</Link>
+            <Link to="/news">News</Link>
+            <Link to="/events">Upcoming Events</Link>
           </div>
           <div className="footer-column">
             <h4>About</h4>
-            <a>About Us</a>
+            <Link to="/about">About Us</Link>
             <a>Vision</a>
           </div>
           <div className="footer-column">
             <h4>Help Centers</h4>
             <a href="#" onClick={handleContactClick}>Contact Us</a>
-            <a>FAQ</a>
+            <Link to="/home#faq">FAQ</Link>
           </div>
         </div>
       </div>

@@ -13,11 +13,13 @@ import RaceDetail from "./Components/raceDetail/RaceDetail";
 import Footer from "./Components/footer/Footer";
 import { Provider } from "react-redux";
 import { store } from "./Redux/store";
+import ScrollToTop from "./Components/common/ScrollToTop";
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
+        <ScrollToTop />
         <div className="App">
           <Header />
           <div>
