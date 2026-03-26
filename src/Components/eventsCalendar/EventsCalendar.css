@@ -75,6 +75,7 @@
   display: flex;
   align-items: center;
   padding: 0.5rem 1.5rem;
+  border: 1px solid #333;
 }
 
 .custom-dropdown-container {
@@ -193,4 +194,8 @@
 
 .events-cards-container::-webkit-scrollbar {
   display: none;
+}
+
+.calendar-no-data {
+  color: white;
 }

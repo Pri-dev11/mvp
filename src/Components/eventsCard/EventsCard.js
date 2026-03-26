@@ -1,12 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./EventsCard.css"
 
 function EventsCard(props) {
   const navigate = useNavigate();
-  const event = props.event
+  const [event, setEvent] = useState()
 
   console.log(event)
+  useEffect(() => {
+    setEvent(props.event)
+  }, [])
+
   const formatDate = (dateString) => {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -20,10 +24,10 @@ function EventsCard(props) {
   }
 
   return (
-    <div key={event._id} className="event-card" onClick={() => navigate('/raceDetail')}>
-      <div className="event-badge">{event.remainingDays} Days remaining</div>
+    <div key={event?._id} className="event-card" onClick={() => navigate('/raceDetail')}>
+      <div className="event-badge">{event?.remainingDays} Days remaining</div>
       <h3 className="event-title">
-        {event.name}
+        {event?.name}
       </h3>
       <div className="event-details">
         <div className="event-detail-item">
@@ -31,8 +35,8 @@ function EventsCard(props) {
           <div className="detail-text">
             <span className="detail-label">Event Country</span>
             <div className="detail-value-container">
-              <span className="detail-value">{event.country.name}</span>
-              <img className="detail-country-flag" src={event.country.flag} alt="flag" />
+              <span className="detail-value">{event?.country?.name}</span>
+              <img className="detail-country-flag" src={event?.country?.flag} alt="flag" />
             </div>
           </div>
         </div>
@@ -40,7 +44,7 @@ function EventsCard(props) {
           <span className="detail-icon"><i className="fa-regular fa-calendar"></i></span>
           <div className="detail-text">
             <span className="detail-label">Event Date</span>
-            <span className="detail-value">{formatDate(event.localStartTime)}</span>
+            <span className="detail-value">{formatDate(event?.utcStartTime)}</span>
           </div>
         </div>
       </div>

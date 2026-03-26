@@ -117,10 +117,12 @@ function EventsCalendar(props) {
           </div>
         </div>
 
-        <div className="events-carousel-controls">
-          <button className="carousel-btn nav-left" onClick={() => scroll('left')}>&larr;</button>
-          <button className="carousel-btn nav-right" onClick={() => scroll('right')}>&rarr;</button>
-        </div>
+        {Array.isArray(events) && events.length > 3 ? (
+          <div className="events-carousel-controls">
+            <button className="carousel-btn nav-left" onClick={() => scroll('left')}>&larr;</button>
+            <button className="carousel-btn nav-right" onClick={() => scroll('right')}>&rarr;</button>
+          </div>
+        ) : null}
 
         {props.loading ? (
           <div className="loading-events">
@@ -141,7 +143,7 @@ function EventsCalendar(props) {
                 <EventsCard key={event._id || event.id || index} event={event} />
               ))
             ) : (
-              <div className="no-events p-5 text-muted">No events found for this period.</div>
+              <div className="no-events p-5 calendar-no-data">No events found for this period.</div>
             )}
           </div>
         )}

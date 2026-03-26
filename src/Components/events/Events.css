@@ -101,6 +101,12 @@
   font-weight: 700;
 }
 
+.upcoming-flag {
+  height: 15px;
+  width: 15px;
+  margin-left: 5px;
+}
+
 /* Horse silhouette */
 .horse-silhouette {
   position: absolute;
@@ -298,4 +304,9 @@
   gap: 1.5rem;
   overflow-x: auto;
   padding: 0 2rem 2rem 2rem;
+}
+
+.events-no-data {
+  color: black;
+  text-align: center;
 }

@@ -1,31 +1,18 @@
-import React, { useState, useEffect } from 'react'
-import { Row, Col } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react';
+import { Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { fetchUpcomingEvents, fetchEventsCalendar } from '../../Redux/Actions';
 import EventsCard from "../eventsCard/EventsCard"
 import './Events.css'
 
-const mockUpcomingEvent = {
-  id: 1,
-  startDate: "2026-05-01T08:00:00.000Z",
-  title: "Moroccan leg of the UAEPresidentCup Series",
-  country: "Morocco",
-  countryFlag: "🇲🇦",
-  date: "1 may, 2025",
-};
-
-const mockEvents = [
-  { id: 1, remainingDays: 7, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "30 apr, 2025" },
-  { id: 2, remainingDays: 31, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "30 may, 2025" },
-  { id: 3, remainingDays: 50, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "3 jun, 2025" },
-];
-
-
-const SEASONS = ["2024", "2025", "2026"];
-const EVENT_TYPES = ["All Events", "Race", "Cup", "Series"];
+// const SEASONS = ["2024", "2025", "2026"];
+// const EVENT_TYPES = ["All Events", "Race", "Cup", "Series"];
 
 function useCountdown(targetDateStr) {
   const calcTimeLeft = () => {
+    if (!targetDateStr) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     const diff = new Date(targetDateStr) - new Date();
-    if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    if (diff <= 0 || isNaN(diff)) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
       hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
@@ -41,43 +28,84 @@ function useCountdown(targetDateStr) {
   return timeLeft;
 }
 
-function Events() {
+function Events(props) {
   const [events, setEvents] = useState([]);
-  const [upcomingEvent] = useState(mockUpcomingEvent);
-  const [selectedSeason, setSelectedSeason] = useState("");
-  const [selectedEvent, setSelectedEvent] = useState("");
-  const [seasonOpen, setSeasonOpen] = useState(false);
-  const [eventOpen, setEventOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [upcomingEvent, setUpcomingEvent] = useState(null);
+  // const [selectedSeason, setSelectedSeason] = useState("");
+  // const [selectedEvent, setSelectedEvent] = useState("");
+  // const [seasonOpen, setSeasonOpen] = useState(false);
+  // const [eventOpen, setEventOpen] = useState(false);
+  // const [loading, setLoading] = useState(true);
+  const [selectedYear, setSelectedYear] = useState('2026');
+  const [selectedMonth, setSelectedMonth] = useState('March');
 
+  const filterRef = React.useRef(null);
+  const [showYearPicker, setShowYearPicker] = useState(false);
+  const [showMonthPicker, setShowMonthPicker] = useState(false);
 
-  // API Integration Scope
-  const fetchEvents = async (year, month) => {
-    setLoading(true);
-    try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/events?year=${year}&month=${month}`);
-      // const data = await response.json();
-      // setEvents(data);
-
-      // Simulating API delay and mock data
-      setTimeout(() => {
-        setEvents(mockEvents);
-        setLoading(false);
-      }, 500);
-    } catch (error) {
-      console.error("Failed to fetch events:", error);
-      setLoading(false);
-    }
-  };
+  const formatDate = (dateString) => {
+    if (!dateString) return "";
+    const date = new Date(dateString);
+    const day = date.getDate();
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+    const month = monthNames[date.getMonth()];
+    const year = date.getFullYear();
+    return `${day}, ${month} ${year}`;
+  }
 
   useEffect(() => {
-    fetchEvents(selectedSeason, selectedEvent);
-  }, [selectedSeason, selectedEvent]);
+    props.fetchUpcomingEvents();
+  }, [])
 
-  const countdown = useCountdown(upcomingEvent.startDate);
+  useEffect(() => {
+    if (props.upcomingEventData) {
+      let upcomingEventData = props.upcomingEventData?.data;
+      if (Array.isArray(upcomingEventData) && upcomingEventData.length > 0) {
+        setUpcomingEvent(upcomingEventData[0])
+      }
+    }
+  }, [props.upcomingEventData]);
+
+  useEffect(() => {
+    let params = {
+      month: selectedMonth,
+      year: selectedYear
+    }
+    props.fetchEventsCalendar(params);
+  }, [selectedYear, selectedMonth]);
+
+  useEffect(() => {
+    // Array is in props.eventsList.data as confirmed by the user
+    if (props.eventsList && Array.isArray(props.eventsList.data)) {
+      setEvents(props.eventsList.data);
+    }
+  }, [props.eventsList]);
+
+  const countdown = useCountdown(upcomingEvent?.localStartTime);
 
   const pad = (n) => String(n).padStart(2, "0");
+
+  if (props.loading) {
+    return (
+      <div className="events-page loading-state text-center py-5">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading events...</span>
+        </div>
+        <p className="mt-3">Loading upcoming events...</p>
+      </div>
+    );
+  }
+
+  if (props.error) {
+    return (
+      <div className="events-page error-state text-center py-5">
+        <div className="text-danger fw-bold">Something went wrong!!</div>
+        <p className="text-muted">{props.error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="events-page">
@@ -100,14 +128,15 @@ function Events() {
                     <i className="fa-solid fa-globe me-1"></i> Event Country
                   </span>
                   <span className="meta-value">
-                    {upcomingEvent.country} {upcomingEvent.countryFlag}
+                    {upcomingEvent?.country?.name}
+                    <img className="upcoming-flag" src="upcomingEvent?.country?.flag" alt="flag"></img>
                   </span>
                 </div>
                 <div className="upcoming-meta-item">
                   <span className="meta-label">
                     <i className="fa-regular fa-calendar me-1"></i> Event Date
                   </span>
-                  <span className="meta-value">{upcomingEvent.date}</span>
+                  <span className="meta-value">{formatDate(upcomingEvent?.localStartTime)}</span>
                 </div>
               </div>
             </div>
@@ -143,7 +172,7 @@ function Events() {
 
       <hr className="events-divider" />
 
-      <div className="events-filters d-flex justify-content-center gap-3 mt-4">
+      {/* <div className="events-filters d-flex justify-content-center gap-3 mt-4">
         <div className="filter-dropdown-wrapper">
           <button className="filter-pill" onClick={() => { setSeasonOpen(o => !o); setEventOpen(false); }}>
             <i className="fa-regular fa-calendar me-2"></i>
@@ -173,21 +202,92 @@ function Events() {
             </div>
           )}
         </div>
+      </div> */}
+
+      <div className="events-filters-container" ref={filterRef}>
+        <div className="events-filters">
+          <div className="custom-dropdown-container" onClick={() => { setShowYearPicker(!showYearPicker); setShowMonthPicker(false); }}>
+            <span className="icon"><i className="fa-regular fa-calendar"></i></span>
+            <div className="custom-dropdown-value">
+              {selectedYear}
+              <span className="custom-dropdown-arrow">▼</span>
+            </div>
+
+            {showYearPicker && (
+              <div className="custom-popover" onClick={e => e.stopPropagation()}>
+                <div className="calendar-grid">
+                  {['2024', '2025', '2026', '2027', '2028', '2029'].map(year => (
+                    <div
+                      key={year}
+                      className={`calendar-grid-item ${selectedYear === year ? 'selected' : ''}`}
+                      onClick={() => { setSelectedYear(year); setShowYearPicker(false); }}
+                    >
+                      {year}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          <div className="filter-divider"></div>
+
+          <div className="custom-dropdown-container" onClick={() => { setShowMonthPicker(!showMonthPicker); setShowYearPicker(false); }}>
+            <span className="icon"><i className="fa-regular fa-clock"></i></span>
+            <div className="custom-dropdown-value">
+              {selectedMonth}
+              <span className="custom-dropdown-arrow">▼</span>
+            </div>
+
+            {showMonthPicker && (
+              <div className="custom-popover month-popover" onClick={e => e.stopPropagation()}>
+                <div className="calendar-grid">
+                  {['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'].map(month => (
+                    <div
+                      key={month}
+                      className={`calendar-grid-item ${selectedMonth === month ? 'selected' : ''}`}
+                      onClick={() => { setSelectedMonth(month); setShowMonthPicker(false); }}
+                    >
+                      {month.substring(0, 3)}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
-      {loading ? (
+      {props.loading ? (
         <div className="loading-events">Loading events...</div>
       ) : (
         <Row className="g-4 px-3">
-          {events.map(event => (
-            <Col key={event.id} lg={4} md={6} sm={12}>
-              <EventsCard event={event} />
-            </Col>
-          ))}
+          {Array.isArray(events) && events.length > 0 ? (
+            events.map((event, index) => (
+              <Col key={event.id} lg={4} md={6} sm={12}>
+                <EventsCard key={event._id || event.id || index} event={event} />
+              </Col>
+            ))
+          ) : (
+            <div className="no-events p-5 events-no-data">No events found for this period.</div>
+          )}
         </Row>
       )}
     </div>
   );
 }
 
-export default Events;
+const mapStateToProps = (state) => ({
+  upcomingEventData: state.upcomingEvent.data,
+  eventsCalendarData: state.eventsCalendar.data,
+  loading: state.upcomingEvent.loading,
+  error: state.upcomingEvent.error,
+  eventsList: state.eventsCalendar.data,
+});
+
+const mapDispatchToProps = {
+  fetchUpcomingEvents,
+  fetchEventsCalendar,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Events);
