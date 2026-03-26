@@ -13,7 +13,7 @@ function Home() {
     <div className="home-container">
       <LandingPage />
       <LiveEvent />
-      <News from="home" />
+      <News />
       <EventsCalendar />
       <BookExperienceCard from="home" />
       <Winners />

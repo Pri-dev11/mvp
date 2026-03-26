@@ -86,11 +86,18 @@
   width: 100%;
 }
 
+.detail-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding: 0 1.5rem;
+}
+
 .detail-author-section {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
-  margin: 1.5rem;
 }
 
 .author-img,

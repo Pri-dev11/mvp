@@ -11,30 +11,33 @@ import Ticket from "./Components/ticket/Ticket";
 import Gallery from "./Components/gallery/Gallery";
 import RaceDetail from "./Components/raceDetail/RaceDetail";
 import Footer from "./Components/footer/Footer";
-
+import { Provider } from "react-redux";
+import { store } from "./Redux/store";
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Header />
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news/:id" element={<NewsDetail />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/horsesAndPeople" element={<HorsesAndPeople />} />
-            <Route path="/ticket" element={<Ticket />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/raceDetail" element={<RaceDetail />} />
-          </Routes>
+    <Provider store={store}>
+      <Router>
+        <div className="App">
+          <Header />
+          <div>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/news" element={<News />} />
+              <Route path="/news/:id" element={<NewsDetail />} />
+              <Route path="/events" element={<Events />} />
+              <Route path="/horsesAndPeople" element={<HorsesAndPeople />} />
+              <Route path="/ticket" element={<Ticket />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/raceDetail" element={<RaceDetail />} />
+            </Routes>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </Router>
+      </Router>
+    </Provider>
   );
 }
 
