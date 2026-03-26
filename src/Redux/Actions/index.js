@@ -7,7 +7,7 @@ export const fetchNewsList = () => {
   return async (dispatch) => {
     dispatch({ type: NEWS_LIST });
     try {
-      const response = await axios.get(BASE_URL + "nenews?page=1&limit=200ws");
+      const response = await axios.get(BASE_URL + "news?page=1&limit=200ws");
       dispatch({ type: NEWS_LIST_SUCCESS, payload: response.data.data });
     } catch (error) {
       dispatch({ type: NEWS_LIST_FAILURE, payload: error.message });
