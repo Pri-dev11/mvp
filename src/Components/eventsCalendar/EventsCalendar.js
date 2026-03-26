@@ -1,47 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import EventsCard from "../eventsCard/EventsCard"
+import { connect } from "react-redux";
+import EventsCard from "../eventsCard/EventsCard";
+import { fetchEventsCalendar } from "../../Redux/Actions";
 import './EventsCalendar.css';
 
-const mockEvents = [
-  { id: 1, remainingDays: 7, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "30 apr, 2025" },
-  { id: 2, remainingDays: 31, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "30 may, 2025" },
-  { id: 3, remainingDays: 50, title: "Moroccan leg of the UAEPresidentCup Series", country: "Morocco", date: "3 jun, 2025" },
-];
-
-function EventsCalendar() {
+function EventsCalendar(props) {
+  const [selectedYear, setSelectedYear] = useState('2026');
+  const [selectedMonth, setSelectedMonth] = useState('March');
   const [events, setEvents] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [selectedYear, setSelectedYear] = useState('2025');
-  const [selectedMonth, setSelectedMonth] = useState('April');
 
   const filterRef = React.useRef(null);
   const [showYearPicker, setShowYearPicker] = useState(false);
   const [showMonthPicker, setShowMonthPicker] = useState(false);
 
-  // API Integration Scope
-  const fetchEvents = async (year, month) => {
-    setLoading(true);
-    try {
-      // TODO: Replace with actual API call
-      // const response = await fetch(`/api/events?year=${year}&month=${month}`);
-      // const data = await response.json();
-      // setEvents(data);
-
-      // Simulating API delay and mock data
-      setTimeout(() => {
-        setEvents(mockEvents);
-        setLoading(false);
-      }, 500);
-    } catch (error) {
-      console.error("Failed to fetch events:", error);
-      setLoading(false);
-    }
-  };
-
+  // Fetch events when filters change (also runs on mount)
   useEffect(() => {
-    fetchEvents(selectedYear, selectedMonth);
+    let params = {
+      month: selectedMonth,
+      year: selectedYear
+    }
+    props.fetchEventsCalendar(params);
   }, [selectedYear, selectedMonth]);
 
+  useEffect(() => {
+    // Array is in props.eventsList.data as confirmed by the user
+    if (props.eventsList && Array.isArray(props.eventsList.data)) {
+      setEvents(props.eventsList.data);
+    }
+  }, [props.eventsList]);
+
+  // Click outside handler
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (filterRef.current && !filterRef.current.contains(event.target)) {
@@ -52,6 +40,18 @@ function EventsCalendar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const scrollRef = React.useRef(null);
+
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      const scrollAmount = 400; // Adjust as needed
+      scrollRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   return (
     <div className="events-calendar-section">
@@ -92,7 +92,7 @@ function EventsCalendar() {
             <div className="filter-divider"></div>
 
             <div className="custom-dropdown-container" onClick={() => { setShowMonthPicker(!showMonthPicker); setShowYearPicker(false); }}>
-              <span className="icon"><i class="fa-regular fa-clock"></i></span>
+              <span className="icon"><i className="fa-regular fa-clock"></i></span>
               <div className="custom-dropdown-value">
                 {selectedMonth}
                 <span className="custom-dropdown-arrow">▼</span>
@@ -118,17 +118,31 @@ function EventsCalendar() {
         </div>
 
         <div className="events-carousel-controls">
-          <button className="carousel-btn nav-left">&larr;</button>
-          <button className="carousel-btn nav-right">&rarr;</button>
+          <button className="carousel-btn nav-left" onClick={() => scroll('left')}>&larr;</button>
+          <button className="carousel-btn nav-right" onClick={() => scroll('right')}>&rarr;</button>
         </div>
 
-        {loading ? (
-          <div className="loading-events">Loading events...</div>
+        {props.loading ? (
+          <div className="loading-events">
+            <div className="spinner-border text-primary" role="status">
+              <span className="visually-hidden">Loading events...</span>
+            </div>
+            <p className="mt-2">Loading events...</p>
+          </div>
+        ) : props.error ? (
+          <div className="error-events text-danger fw-bold">
+            Something went wrong!!
+            <p className="text-muted small fw-normal">{props.error}</p>
+          </div>
         ) : (
-          <div className="events-cards-container">
-            {events.map(event => (
-              <EventsCard event={event} />
-            ))}
+          <div className="events-cards-container" ref={scrollRef}>
+            {Array.isArray(events) && events.length > 0 ? (
+              events.map((event, index) => (
+                <EventsCard key={event._id || event.id || index} event={event} />
+              ))
+            ) : (
+              <div className="no-events p-5 text-muted">No events found for this period.</div>
+            )}
           </div>
         )}
       </div>
@@ -136,4 +150,14 @@ function EventsCalendar() {
   );
 }
 
-export default EventsCalendar;
+const mapStateToProps = (state) => ({
+  eventsList: state.eventsCalendar.data,
+  loading: state.eventsCalendar.loading,
+  error: state.eventsCalendar.error,
+});
+
+const mapDispatchToProps = {
+  fetchEventsCalendar,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventsCalendar);
