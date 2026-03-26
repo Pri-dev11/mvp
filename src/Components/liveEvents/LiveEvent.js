@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Row, Col } from 'react-bootstrap';
 import "./LiveEvents.css";
 
 const videos = [
@@ -50,27 +51,32 @@ function LiveEvent() {
       </div>
 
       <div className="live-video-container">
-        <div className="live-video">
-          {currentVideo.url ? (
-            <iframe
-              src={`https://www.youtube.com/embed/${getYoutubeId(currentVideo.url)}`}
-              title="YouTube video player"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen>
-            </iframe>
-          ) : null}
-        </div>
-        <div className="video-list">
-          {videoList.map((video) => (
-            <div key={video.id} className="video-item" onClick={() => handleVideoSelect(video)}>
-              <img src={`https://img.youtube.com/vi/${getYoutubeId(video.url)}/mqdefault.jpg`} alt={video.title} />
-              <div className="video-item-overlay">
-                <h4>{video.title}</h4>
-                {/* <span className="live-badge">Live</span> */}
-              </div>
+        <Row className="g-4 align-items-stretch text-start">
+          <Col lg={8} md={12}>
+            <div className="live-video">
+              {currentVideo.url ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${getYoutubeId(currentVideo.url)}`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen>
+                </iframe>
+              ) : null}
             </div>
-          ))}
-        </div>
+          </Col>
+          <Col lg={4} md={12}>
+            <div className="video-list">
+              {videoList.map((video) => (
+                <div key={video.id} className="video-item" onClick={() => handleVideoSelect(video)}>
+                  <img src={`https://img.youtube.com/vi/${getYoutubeId(video.url)}/mqdefault.jpg`} alt={video.title} />
+                  <div className="video-item-overlay">
+                    <h4>{video.title}</h4>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </Col>
+        </Row>
       </div>
     </div>
   );

@@ -222,3 +222,29 @@ a.header-link.active::after {
     width: auto;
   }
 }
+
+@media (max-width: 768px) {
+  .live-indicator {
+    display: none !important;
+  }
+
+  #nav-dropdown-season {
+    display: none !important;
+  }
+
+  .header-logo {
+    width: 8rem;
+  }
+
+  .header-right {
+    gap: 0.5rem;
+  }
+
+  .hamburger-menu {
+    margin-left: 0.5rem;
+  }
+}
+
+.hamburger-line {
+  background: #000 !important;
+}

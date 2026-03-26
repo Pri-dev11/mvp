@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, Spinner } from 'react-bootstrap';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { connect } from "react-redux";
 import { fetchNewsList } from "../../Redux/Actions";
@@ -63,6 +63,15 @@ function News(props) {
     </Card>
   );
 
+  if (props.loading) {
+    return (
+      <div className='faq-container'>
+        <Spinner animation="border" variant="primary" />
+        <p className="mt-3">Loading ...</p>
+      </div>
+    );
+  }
+
   return (
     <div className="news-container mt-5 pt-3">
       <div className="news-header-row">
@@ -89,6 +98,16 @@ function News(props) {
           </div>
         )}
       </div>
+
+      {error && (
+        <div className="error-news text-center p-5 text-danger fw-bold">
+          Something went wrong!!
+          <p className="text-muted small fw-normal">{error}</p>
+        </div>
+      )}
+      {!loading && !error && visibleNews.length === 0 && (
+        <div className="no-news text-center p-5">No news found.</div>
+      )}
 
       <div className="news-card-container">
         <Row className="g-4 w-100">
