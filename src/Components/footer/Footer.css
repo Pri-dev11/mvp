@@ -69,6 +69,10 @@
   flex: 1;
 }
 
+.footer-column .link {
+  cursor: pointer;
+}
+
 .footer-column h4 {
   margin-bottom: 1rem;
 }
