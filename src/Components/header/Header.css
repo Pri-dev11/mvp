@@ -78,9 +78,9 @@ a.header-link.active::after {
 
 .header-nav-links {
   gap: 0;
-  flex-wrap: nowrap !important;
+  flex-wrap: nowrap;
   display: flex !important;
-  flex-direction: row !important;
+  flex-direction: row;
   width: 100%;
   justify-content: center;
 }
@@ -193,13 +193,14 @@ a.header-link.active::after {
     right: -100%;
     width: 250px;
     height: calc(100vh - 4rem);
-    background: rgba(255, 255, 255, 0.95);
+    background: #ffffff;
     flex-direction: column;
     padding-top: 2rem;
     transition: right 0.3s ease-in-out;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1300;
     display: flex !important;
+    overflow-y: auto;
   }
 
   .header-center.open {
